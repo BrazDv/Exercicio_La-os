@@ -1,23 +1,13 @@
+import pandas as pd
 
-salario = float(input("Digite o salário do colaborador: R$ "))
+url = "https://raw.githubusercontent.com/alura-cursos/introducao-a-data-science/master/aula1.2/ratings.csv"
+dados = pd.read_csv(url)
 
-if salario <= 280:
-    percentual_aumento = 20
-elif salario <= 700:
-    percentual_aumento = 15
-elif salario <= 1500:
-    percentual_aumento = 10
-else:
-    percentual_aumento = 5
+print("Primeiros 12 registros:")
+print(dados.head(12))
 
-aumento = salario * (percentual_aumento / 100)
-novo_salario = salario + aumento
+print("\nÚltimos 6 registros:")
+print(dados.tail(6))
 
-inflacao = 3.8
-aumento_real = aumento - (aumento * (inflacao / 100))
-
-print("\nSalário antes do reajuste: R$ {:.2f}".format(salario))
-print("Percentual de aumento aplicado: {}%".format(percentual_aumento))
-print("Valor do aumento: R$ {:.2f}".format(aumento))
-print("Novo salário após o aumento: R$ {:.2f}".format(novo_salario))
-print("Valor do aumento real, descontado a inflação: R$ {:.2f}".format(aumento_real))
+print("\nTamanho da massa de dados:")
+print(dados.shape)
